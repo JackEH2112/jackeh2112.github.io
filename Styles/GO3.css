@@ -7,6 +7,10 @@
 		font-weight: 700;
 	}
 
+	header{
+		flex-basis: 100%;
+	}
+
 	#headLink{
 		text-decoration: none;
 		color: var(--jSlateBlue);
@@ -20,13 +24,25 @@
 		text-align: center;
 		letter-spacing: 0.1em;
 	}
+body{
+	width: 80%;
+	left: 10%;
+	position: relative;
+	background-color: var(--jOffWhite);
+}
+article{
+	text-align: justify;
+}
+img{
+	width: auto;
+	height: 250px;
+}
 h2{
 	color: var(--jSlateBlue);
 	text-align: center;
 	font-family: "Heebo";
 	font-weight: 700;
 }
-
 h3{
 	font-family: "Heebo";
 	font-weight: 400;
@@ -36,85 +52,64 @@ h3{
 p{
 	font-family: "EB Garamond";
 }
-
 #subHeading{
 	font-style: italic;
 }
-
-#modules{
-	width: 50%;
-	display: inline-block;
-	position: relative;
-}
-
-/*This isn't working and I'm too tired to figure out why - I'm trying to position the pull quote and gif to the right of the modules article.*/
-#quote{
-	width: 50%;
-	display: inline-block;
-	position: relative;
-	left: 50%%;
-	font-family: "EB Garamond";
-	font-weight: 700;
-	font-style: italic;
-	font-size: 36px;
-	text-align: center;
-}
-
-#progressGif{
-	position: relative;
-	width:50%;
-	display: inline-block;
-	right: 0;
-}
-
 #center{
 	text-align: center!important;
 }
 
-body{
-	width: 80%;
-	left: 10%;
+#styleGuide{
+	width: 50%;
+	height: auto!important;
+	margin-left: 23%;
 	position: relative;
-	background-color: var(--jOffWhite);
+	display: inline-block;
 }
 
-/*navigation*/
-	ul{
-		text-align: center;
-		position: relative;
-	}
-	li{
-		display: inline-block;
-		position: relative;
-	}
-	.primaryNav{
-		font-family: "Heebo";
-		font-weight: 400;
-		background-color: 
-	}
-	.secondaryNav{
-		font-family: "Heebo";
-		font-weight: 300;
-	}
-	a{
-		text-decoration: none;
-	}
-
-
-article{
-	text-align: justify;
+#quote{
+	font-family: "EB Garamond";
+	font-size: 26px;
+	font-style: italic;
+	text-align: center;
 }
 
-img{
-	max-width: auto;
-	max-height: 250px;
+ul{
+	text-align: center;
+}
 
+li{
+	display: inline-block;
+	margin: 0 2em;
+}
+a.primaryNav{
+	color: var(--jSlateBlue);
+	text-decoration: none;
+	font-family: "Heebo";
+	font-weight: 400;
+}
+a.secondaryNav{
+	color: var(--jSlateBlue);
+	text-decoration: none;
+	font-family: "Heebo";
+	font-weight: 300;
+}
+a.primaryNav:hover{
+	color: var(--jLightBlue);
+}
+a.secondaryNav:hover{
+	color: var(--jLightBlue);
+}
+
+#progressGif{
+	text-align: center;
+	margin: 0 32%;
+	position: relative;
 }
 
 #gardenPictures{
 	text-align: center;
 }
-
 
 .neilVoice{
 	font-family: sans-serif;
@@ -122,6 +117,12 @@ img{
 
 .dadaVoice{
 	font-family: "EB Garamond";
+}
+
+.pupPictures{
+	position: relative;
+	margin: 0 16%;
+	box-sizing: border-box;
 }
 
 
