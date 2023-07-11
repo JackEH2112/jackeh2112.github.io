@@ -1,29 +1,3 @@
-/*ooga booga are we working*/
-
-/*header*/	
-	h1, h4{
-		text-align: center;
-		font-family: "Heebo";
-		font-weight: 700;
-	}
-
-	header{
-		flex-basis: 100%;
-	}
-
-	#headLink{
-		text-decoration: none;
-		color: var(--jSlateBlue);
-
-	}
-	#headLink:hover{
-		color: var(--jLightBlue);
-	}
-
-	#subHeading{
-		text-align: center;
-		letter-spacing: 0.1em;
-	}
 body{
 	width: 80%;
 	left: 10%;
@@ -32,7 +6,6 @@ body{
 	text-align: center;
 }
 
-}
 h2{
 	color: var(--jSlateBlue);
 	text-align: center;
@@ -51,35 +24,231 @@ p{
 .subHeading{
 	font-style: italic;
 }
+/*header*/	
+	h1, h4{
+		text-align: center;
+		font-family: "Heebo";
+		font-weight: 700;
+	}
 
-ul{
-	text-align: center;
+	header{
+		flex-basis: 100%;
+	
+		height: 120px;
+		padding: 2px;
+		box-sizing: border-box;
+		margin-bottom: 0px;
+	}
+
+	#headLink{
+		text-decoration: none;
+		color: var(--jSlateBlue);
+
+	}
+	#headLink:hover{
+		color: var(--jLightBlue);
+	}
+
+	#subHeading{
+		text-align: center;
+		letter-spacing: 0.1em;
+	}
+
+.bigImgBox{
+	width: 180px;
+	height: auto;
+	border-radius: 10px 0 10px 0;
+	margin-bottom: 10px;
 }
 
-li{
-	display: inline-block;
-	margin: 0 2em;
-}
-a.primaryNav{
-	color: var(--jSlateBlue);
-	text-decoration: none;
-	font-family: "Heebo";
-	font-weight: 400;
-}
-a.secondaryNav{
-	color: var(--jSlateBlue);
-	text-decoration: none;
-	font-family: "Heebo";
-	font-weight: 300;
-}
-a.primaryNav:hover{
-	color: var(--jLightBlue);
-}
-a.secondaryNav:hover{
-	color: var(--jLightBlue);
+.weeImgBox{
+	width: 160px;
+	height: auto;
+	border-radius: 0 10px 0 10px;
+	margin-bottom: 10px;
 }
 
+/*nav*/
+	nav{
+		height: 44px;
+		background-color: var(--jLightBlue);
+		margin-top: 0px;
+		border-radius: 20px 0 20px 0;
+		position: sticky;
+		top: 0;
+	}
+	ul{
+		margin-top: 10px;
+		text-align: center;
+	}
 
+	li{
+		margin-top: 10px;
+		display: inline-block;
+		
+	}
+
+	a.primaryNav, a.secondaryNav{
+		color: var(--jSlateBlue);
+		text-decoration: none;
+		font-family: "Heebo";
+		position: relative;
+		height: 24px;
+		padding: 0 10px;
+		box-sizing: border-box;
+		background-color: hsl(205, 10%, 80%);
+		margin: 0 5px;
+		display: inline-block;
+		/*border: 1px solid black;*/
+	}
+
+	a.primaryNav{
+		font-weight: 400;
+	}
+	a.secondaryNav{
+		font-weight: 300;
+	}
+
+	a.primaryNav::before, a.secondaryNav::before, a.primaryNav::after, a.secondaryNav::after{
+		content: "";
+		position: absolute;
+		border-width: 12px 10px;
+		border-color: hsl(205, 10%, 80%);
+		border-style: solid;
+		top: 0;
+	}
+
+	a.primaryNav::before, a.secondaryNav::before{
+		left: -10px;
+		border-left-color: transparent;
+	}	
+
+	a.primaryNav::after, a.secondaryNav::after{
+		left: 100%;
+		border-color: transparent;
+		border-left-color: hsl(205, 10%, 80%);
+	}
+
+	a.primaryNav:hover, a.secondaryNav:hover{
+		color: var(--jLightBlue);
+	}
+
+/*Glasgow Grid*/
+
+	#ggGlasgowGrid, #hhStirlingBox{
+		display: grid;
+		min-height: 700px;
+		grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
+		gap: 10px;
+	}
+
+	.gggBox, .hhSBox{
+		padding: 0 40px;
+		}
+
+	.gggBox{
+		/*border: 1px solid var(--jLightBlue);*/
+		border-radius: 20px 0 20px 0;
+		}
+
+		.one{
+			grid-area: 1 / 1 / span 2 / span 2;
+			background-color: var(--jOfferWhite);
+		}
+
+		.two{
+			grid-area: 1 / 3 / span 2 / 4;
+			background-color: var(--jGrey);
+		}
+
+		.three{
+			background-color: var(--jGrey);
+		}
+
+		.four{
+			grid-area: 3 / 2 / 4 / span 2;
+			background-color: var(--jOfferWhite);
+		}
+
+		.five{
+			grid-column: 1 / span 3; 
+			background-color: var(--jOfferWhite);
+			padding: 0 100px;
+		}
+
+	.hhSBox{
+		/*border: 1px dashed var(--jSlateBlue);*/
+		border-radius: 0 20px 0 20px; 
+		}
+
+		.a{
+			grid-column: 1 / span 3;
+			padding: 0 100px;
+			background-color: var(--jOfferWhite);
+		}
+		.b{
+			grid-column: 1 / span 2;
+			background-color: var(--jOfferWhite);
+		}
+		.c{
+			background-color: var(--jGrey);
+		}
+		.d{
+			grid-row: 3 / span 2;
+			background-color: var(--jGrey);
+		}
+		.e{
+			grid-area: 3 / 2 / span 2 / span 2;
+			background-color: var(--jOfferWhite);
+		}
+
+
+#codeDates{
+	margin-top: 20px;
+	padding: 5px 20%;
+	background-image: linear-gradient(to right, var(--jOfferWhite), var(--jGrey));
+	border-radius: 20px 0 20px 0;
+}
+
+/*neil*/
+	#neilGrid{
+		display: grid;
+		min-height: 300px;
+		grid-template: 2fr 1fr / 1fr 1fr 1fr;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+
+	.nGBox{
+		/*border: 1px solid black;*/
+		border-radius: 25px 0 25px 0;
+	}
+
+	.nOne{
+		grid-area: 1 / 1 / span 1 / span 1;
+		padding: 30px;
+		background-color: var(--jOfferWhite);
+	}
+
+	.nTwo{
+		grid-area: 1 / 2 / span 1 / span 2;
+		background-color: var(--jGrey);
+	}
+	.nThree{
+		background-color: var(--jGrey);
+	}
+
+	.nFour{
+		grid-area: 2 / 3 / span 1 / span 1;
+		background-color: var(--jOfferWhite);
+	}
+
+
+
+/*table*/
+	th, td{
+		font-family: "EB Garamond";
+	}
 
 
 /*buttons*/
@@ -118,6 +287,7 @@ footer{
 	padding: 50px;
 	background-color: var(--jSlateBlue);
 	color: var(--jOffWhite);
+	border-radius: 20px 0 20px 0;
 }
 
 /*Color setup*/
@@ -125,6 +295,8 @@ footer{
 		--jLightBlue:hsl(205, 65%, 65%);
 		--jSlateBlue:hsl(205, 70%, 20%);
 		--jOffWhite:hsl(205, 70%, 97%);
+		--jOfferWhite:hsl(205, 70%, 90%);
+		--jGrey:hsl(205, 40%, 90%);
 	}
 
 /*Font setup*/
