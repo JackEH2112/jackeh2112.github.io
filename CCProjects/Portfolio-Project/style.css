@@ -1,0 +1,60 @@
+:root{
+    --jOffWhite:hsl(205,70%,97%);
+    --jOfferWhite:hsl(205,70%,90%);
+    --jGrey:hsl(205, 40%, 90%);
+    --jSlateBlue:hsl(205, 70%, 20%);
+}
+
+body{
+    width: 80%;
+    left: 10%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+header{
+    height: 75px;
+    width: 50%;
+    left: 0;
+    display: inline-block;
+    background-color: var(--jOffWhite);
+    text-align: center;
+}
+
+
+
+/*nav*/
+nav{
+    height: 75px;
+    width: 50%;
+    left: 50%;
+    background-color: var(--jOfferWhite);
+    margin-top: 0px;
+    position: sticky;
+    top: 0;
+}
+
+ul.navUl{
+    margin-top: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+li.navLi{
+    margin-top: 5px;
+    display: inline-block;
+    
+}
+
+a.navA{
+    color: var(--jSlateBlue);
+    text-decoration: none;
+    position: relative;
+    height: 24px;
+    
+    box-sizing: border-box;
+    margin: 0 5px;
+    display: inline-block;
+}
