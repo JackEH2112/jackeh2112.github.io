@@ -4,7 +4,7 @@
     --jGrey:hsl(205, 40%, 90%);
     --jSlateBlue:hsl(205, 70%, 20%);
 }
-
+/*general*/
 body{
     width: 80%;
     left: 10%;
@@ -12,8 +12,12 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: var(--jSlateBlue);
 }
-
+section{
+    width: 100%;
+    padding: 20px;
+}
 header{
     height: 75px;
     width: 50%;
@@ -22,8 +26,28 @@ header{
     background-color: var(--jOffWhite);
     text-align: center;
 }
-
-
+h1, h2, h3{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p, li, form,a{
+    font-family: Arial, Helvetica, sans-serif;
+}
+a.aBody{
+    text-decoration: none;
+}
+a.aBody:link{
+    color: var(--jSlateBlue);
+}
+a.aBody:visited{
+    color: var(--jSlateBlue);
+}
+a.aBody:focus, a.aBody:hover{
+    border-bottom: 1px solid;
+}
+a.aBody:active{
+    color: red;
+}
 
 /*nav*/
 nav{
@@ -34,20 +58,18 @@ nav{
     margin-top: 0px;
     position: sticky;
     top: 0;
+    opacity: 1;
+    display: block;
 }
-
 ul.navUl{
     margin-top: 10px;
     text-align: center;
-    padding: 0 10px;
+    padding: 10px 0;
 }
-
 li.navLi{
     margin-top: 5px;
-    display: inline-block;
-    
+    display: inline-block;  
 }
-
 a.navA{
     color: var(--jSlateBlue);
     text-decoration: none;
@@ -58,3 +80,196 @@ a.navA{
     margin: 0 5px;
     display: inline-block;
 }
+a.navA:visited{
+    color: var(--jSlateBlue);
+}
+a.navA:focus, a.navA:hover{
+    border-bottom: 1px solid;
+}
+a.navA:active{
+    color: red !important;
+}
+nav.fadein{
+    animation: fadein 0.7s ease-in forwards;
+}
+nav.fadeout{
+    animation: fadeout 0.7s ease-out forwards;
+}
+@keyframes fadein {
+    0% {
+        opacity: 0.25;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.25;
+    }
+}
+
+/*about*/
+#about{
+    display: flex;
+    flex-flow: wrap;
+    background-color: var(--jOfferWhite);
+}
+.aboutArt{
+    width: 45%;
+    padding: 0 2.5%;
+}
+.aH{
+    width: 100%;
+}
+.codingPhoto{
+    width: 80%;
+    height: auto;
+    padding: 5% 10%;
+}
+
+/*projects*/
+#projectsAndSkills{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--jOffWhite);
+}
+.pAS{
+    width: 45%;
+    padding: 0 2.5%;
+}
+ul.ski{
+    padding: 10px 0;
+    text-align: center;
+}
+li.ski{
+    display: inline-block;
+}
+img.showMe{
+    width: 90%;
+    height: auto;
+    margin: auto;
+}
+#proj1{
+    display: grid;
+    grid-gap: 2px;
+    grid-template:
+    "a . b" 3em
+    "c c c" auto / 2fr 2fr 1fr;
+    align-items: center;
+}
+#projectA{
+    grid-area: a;
+}
+#clickMe0{
+    grid-area: b;
+}
+#showMe0{
+    grid-area: c;
+}
+#proj2{
+    display: grid;
+    grid-gap: 2px;
+    grid-template:
+    "d . e" 3em
+    "f f f" auto / 2fr 2fr 1fr;
+    align-items: center; 
+}
+#paraA{
+    grid-area: d;
+}
+#clickMe1{
+    grid-area: e;
+}
+#showMe1{
+    grid-area: f;
+}
+
+/*contact*/
+#contact{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--jOfferWhite);
+}
+.cH{
+    width: 100%;
+}
+form{
+    width: 45%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template: 
+        "a c c" 4em
+        "b c c" 4em
+        ". d ." 2em/1fr 1fr 1fr;
+    padding: 0 2.5%;
+}
+#formSect1{
+    grid-area: a;
+}
+#formSect2{
+    grid-area: b;
+}
+#formSect3{
+    grid-area: c;
+}
+#formSect4{
+    grid-area: d;
+}
+input, textarea{
+    border: 2px inset var(--jSlateBlue);
+}
+input[type=submit]{
+    border: 2px outset var(--jSlateBlue);
+}
+textarea{
+    border-radius: 6% 10% 0 10%;
+}
+input:focus, textarea:focus{
+    border: 4px outset black;
+    background: rgba(12, 12, 162, 0.05) 
+}
+input[type=submit]:focus{
+    border: 2px inset var(--jSlateBlue);
+}
+textarea:focus{
+    border-radius: 0;
+}
+.contact{
+    width: 50%;
+}
+ul.contact{
+    padding: 10px 0;
+    text-align: center;
+}
+li.con{
+    display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+    .aboutArt{
+        width: 90%;
+        padding: 0 5%;
+    }
+}
+
+@media only screen and (max-width: 600px), (orientation:portrait) {
+    .pAS{
+        width: 90%;
+        padding: 0 5%;
+    } 
+    
+    form, .contact{
+        width: 90% !important;
+        padding: 0 5% !important;
+    }
+
+    #formSect3 label{
+        align-self: start;
+    }
+    
+}
+
