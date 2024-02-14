@@ -5,7 +5,8 @@ function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        alert('Submission button')
+        alert(`Submission button ${search}`)
+        setSearch('');
     }
 
     return(

@@ -8,13 +8,18 @@ import Tracklist from './Tracklist.js';
 import Track from './Track.js';
 
 function App() {
+
+  
+
   return (
     <>
-      <SearchBar />
-      <SearchResults />
-      <Playlist />
+      <div>
+        <h1>Jammming!</h1>
+        <p>Personal Playlist Maker</p>
+      </div>
+      
       <Tracklist />
-      <Track />
+
     </>
   );
 }
