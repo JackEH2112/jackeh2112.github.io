@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Track from "./Track";
 
 function Playlist(props) {
-    const {playlist, removeFromPlaylist} = props;
+    const {searchResults, playlist, removeFromPlaylist, trackIsInPlaylist} = props;
 
     const [playlistName, setPlayListName] = useState('')
     const [playlists, setPlaylists] = useState([])
@@ -43,6 +43,7 @@ function Playlist(props) {
                         <Track
                             key={track.id}
                             track={track}
+                            trackIsInPlaylist={trackIsInPlaylist}
                             removeFromPlaylist={() => {removeFromPlaylist(track)}} 
                         />
                     ))}

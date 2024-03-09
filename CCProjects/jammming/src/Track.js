@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
 function Track(props) {
-    const {track, addToPlaylist, removeFromPlaylist} = props;
+    const {track, addToPlaylist, removeFromPlaylist, trackIsInPlaylist} = props;
 
     const handleClick = (track) => {
-        if(track.playlist === true){
+        if(trackIsInPlaylist === true){
             removeFromPlaylist(track.id);
         }
         else{
@@ -26,8 +26,8 @@ function Track(props) {
 
     return(
         <li className="Track">
-            <div className="songName">{track.songName}</div>
-            <div className="songInfo">Artist: {track.artist} || Album: {track.album}</div>
+            <div className="songName">{track.name}</div>
+            <div className="songInfo">Artist: {track.artists.map(artist => artist.name)} || Album: {track.album.name}</div>
             <button 
                 type="button"
                 className="playlistAddRemove"
@@ -35,7 +35,7 @@ function Track(props) {
                 onClick={() => {
                     handleClick(track);
                   }}>
-                    {track.playlist ? '-' : '+'}
+                    {trackIsInPlaylist ? '-' : '+'}
             </button>
         </li>
     )
