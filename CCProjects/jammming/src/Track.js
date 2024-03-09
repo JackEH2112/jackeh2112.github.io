@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function Track(props) {
-    const {track, addToPlaylist, removeFromPlaylist, playlist} = props;
+    const {track, addToPlaylist, removeFromPlaylist} = props;
 
     const handleClick = (track) => {
         if(track.playlist === true){
@@ -12,7 +12,7 @@ function Track(props) {
         }
     }
 
-    const [labelVariable, setLabelVariable] = useState('');
+    //const [labelVariable, setLabelVariable] = useState('');
 
 
     /*function getLabelVariable() {
