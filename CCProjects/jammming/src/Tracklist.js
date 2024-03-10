@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Track from "./Track";
 
 function Tracklist(props) {
-    const {searchResults, addToPlaylist, trackIsInPlaylist} = props;
+    const {searchResults, addToPlaylist} = props;
     return (
         <>
             <ul>
@@ -10,7 +10,7 @@ function Tracklist(props) {
                     <Track 
                         key={track.id}
                         track={track}
-                        trackIsInPlaylist={trackIsInPlaylist}
+                        trackIsInPlaylist = {false}
                         addToPlaylist={() => {addToPlaylist(track)}}
                          />
                 ))}

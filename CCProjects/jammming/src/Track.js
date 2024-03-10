@@ -14,7 +14,6 @@ function Track(props) {
 
     //const [labelVariable, setLabelVariable] = useState('');
 
-
     /*function getLabelVariable() {
         if(track.playlist){
             setLabelVariable('Remove track from playlist')

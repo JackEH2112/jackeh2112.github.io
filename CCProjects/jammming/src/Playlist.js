@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Track from "./Track";
 
 function Playlist(props) {
-    const {searchResults, playlist, removeFromPlaylist, trackIsInPlaylist} = props;
+    const {searchResults, playlist, removeFromPlaylist} = props;
 
     const [playlistName, setPlayListName] = useState('')
     const [playlists, setPlaylists] = useState([])
@@ -41,9 +41,9 @@ function Playlist(props) {
                 <ul>
                     {playlist?.map((track) => (
                         <Track
+                            trackIsInPlaylist = {true}
                             key={track.id}
                             track={track}
-                            trackIsInPlaylist={trackIsInPlaylist}
                             removeFromPlaylist={() => {removeFromPlaylist(track)}} 
                         />
                     ))}
