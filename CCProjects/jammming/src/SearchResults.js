@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import Tracklist from './Tracklist';
 import Playlist from './Playlist';
+import './SearchResults.css';
 
 function SearchResults(props) {
-    const {searchResults} = props;
-    console.log(searchResults)
+    const {searchResults, token} = props;
 
     const [playlist, setPlaylist] = useState([]);
 
@@ -25,24 +25,26 @@ function SearchResults(props) {
     }
 
     return (
-        <>
-            <div>
-                <h3>Search Results</h3>
+
+        <div id="searchResults">
+            <div id='tracklist'>
+                <h3 class='heading'>Search Results</h3>
                 {/*{renderTrack()}*/}
                 <Tracklist 
                     searchResults={searchResults}
                     addToPlaylist={addToPlaylist}
                 />
             </div>
-            <div>
-                <h3>Playlist</h3>
+            <div id='playlist'>
+                <h3 class='heading'>Playlist</h3>
                 <Playlist
                     playlist={playlist}
                     removeFromPlaylist={removeFromPlaylist}
+                    token={token}
                 />
             </div>
-            
-        </>
+        </div>
+
     )
 }
 

@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import Track from "./Track";
+import './Playlist.css'
 
 function Playlist(props) {
-    const {searchResults, playlist, removeFromPlaylist} = props;
+    const {playlist, removeFromPlaylist, token} = props;
 
     const [playlistName, setPlayListName] = useState('')
     const [playlists, setPlaylists] = useState([])
@@ -14,6 +15,9 @@ function Playlist(props) {
         }
         else if(playlist.length === 0){
             alert('No tracks in playlist')
+        }
+        else if(!token){
+            alert('You need to be logged in to upload playlists to Spotify')
         }
         else{
             //Save the new playlist
@@ -35,6 +39,7 @@ function Playlist(props) {
         <>
             <form onSubmit={handleSubmit}>
                 <input 
+                    class='heading'
                     onChange={(e) => setPlayListName(e.target.value)}
                     value={playlistName}
                 />
@@ -48,11 +53,12 @@ function Playlist(props) {
                         />
                     ))}
                 </ul>
-                <button type="submit">
+                <button class='heading' type="submit">
                     Upload My Jammms!
                 </button>
             </form>
             {/*add functionality to be able to change playlist names*/}
+            <h3 class='heading'>Saved Playlists</h3>
             <ul>
                 {playlists?.map((pl) => (
                     <li>

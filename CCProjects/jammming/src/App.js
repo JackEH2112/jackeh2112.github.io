@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
-import SearchBar from './SearchBar.js';
+//import SearchBar from './SearchBar.js';
 import SearchResults from './SearchResults.js';
 import axios from 'axios';
 
@@ -66,24 +66,34 @@ function App(props) {
 
   return (
     <>
-      <div>
-        <h1>Jammming!</h1>
-        <p>Personal Playlist Maker</p>
+      <div id='heading'>
+        <h1 class='titleHeading'>Jammming!</h1>
+        <p class='titleHeading'>Personal Playlist Maker</p>
+        
         {!token ?
-        <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
-          Login To Spotify
-        </a>  : 
-        <button onClick={logout}>Logout</button>}
+          <a class='logButton'
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          >
+            <button> Login To Spotify</button>
+          </a> 
+          : 
+        <button class='logButton' onClick={logout}>Logout</button>}
 
         {token ?
-          <form onSubmit={searchArtists}>
+        <div id='searchForm'>
+          <form 
+            onSubmit={searchArtists}
+          >
             <input type='text' onChange={e => setSearchKey(e.target.value)}/>
             <button type='submit'>Find My Jammms</button>
-          </form> :
-          <h2>Please Login</h2>}
+          </form>
+        </div> :
+          <p id='loginRequest'>Please Login</p>}
       </div>
       <SearchResults
+        id='searchResults'
         searchResults = {data}
+        token={token}
       />
     </>
   );
