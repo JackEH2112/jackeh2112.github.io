@@ -1,14 +1,19 @@
 import React, {useState} from "react";
+import axios from "axios";
 import Track from "./Track";
 import './Playlist.css'
+//import { json } from "react-router-dom";
 
 function Playlist(props) {
     const {playlist, removeFromPlaylist, token} = props;
 
     const [playlistName, setPlayListName] = useState('')
     const [playlists, setPlaylists] = useState([])
+    const uriArray = [];
+    let playlistId = 'hello'
+
     
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         if(playlistName === ''){
             alert('Must have a playlist name!')
@@ -20,18 +25,74 @@ function Playlist(props) {
             alert('You need to be logged in to upload playlists to Spotify')
         }
         else{
-            //Save the new playlist
-            setPlaylists(playlists => [...playlists, playlistName])
-            const newUriPlaylist = []
+            //get user id
+            const responseUserId = await axios.get ('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const USER_ID = responseUserId.data.id;
+
+            //Upload playlist to Spotify
+            await axios({
+                method: 'post',
+                url: `https://api.spotify.com/v1/users/${USER_ID}/playlists`,
+                headers: {'Authorization': `Bearer ${token}`},
+                data: {
+                    'name': `${playlistName}`,
+                    'description': 'Playlist created with JAMMMING app',
+                    'public': false
+                }
+            })
+            .then(async function (response) {
+                playlistId = response.data.id;
+                console.log(playlistId)
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert(error)
+            });
+
+            //Get track uris
+            console.log(playlistId)
+            const trackPostUrl = `https://api.spotify.com/v1/users/${USER_ID}/playlists/${playlistId}/tracks`
+            console.log(trackPostUrl)
             for (let i = 0; i < playlist.length; i++){
-                //need function for taking song name and creating uri code - placeholder code
-                const playlistUri = playlist[i]
-                //add uri code to array for Spotify api
-                newUriPlaylist.push(playlistUri)
+                uriArray.push(playlist[i].uri)
             }
-            alert(`Upload ${playlistName} successful`)
-            setPlayListName('')
-            playlist.splice(0)
+            const uriToPost = JSON.stringify(uriArray);
+            console.log(uriToPost);
+            //Post uris to playlist
+            await axios({
+                method: "post",
+                url: `${trackPostUrl}`,
+                headers: {"Authorization": `Bearer ${token}`, "Content-Type": 'application/json'},
+                data: {
+                    "uris": `${JSON.stringify(uriArray)}`, "postition": 0
+                }
+            })
+            .then(function (response) {
+                console.log(response)  
+                //reset
+                alert(`Upload ${playlistName} successful`)
+                setPlaylists(playlists => [...playlists, playlistName])
+                setPlayListName('')
+                playlist.splice(0)
+            })
+            .catch(function (error) {
+                if(error.response){
+                    console.log(error.response)
+                }
+                else if(error.request){
+                    console.log(error.request)
+                }
+                else if(error.message){
+                    console.log(error.message)
+                }
+                else{
+                    console.log('Good luck')
+                }
+            })
         }
     }
 
@@ -39,7 +100,7 @@ function Playlist(props) {
         <>
             <form onSubmit={handleSubmit}>
                 <input 
-                    class='heading'
+                    className='heading'
                     onChange={(e) => setPlayListName(e.target.value)}
                     value={playlistName}
                 />
@@ -53,12 +114,12 @@ function Playlist(props) {
                         />
                     ))}
                 </ul>
-                <button class='heading' type="submit">
+                <button className='heading' type="submit">
                     Upload My Jammms!
                 </button>
             </form>
             {/*add functionality to be able to change playlist names*/}
-            <h3 class='heading'>Saved Playlists</h3>
+            <h3 className='heading'>Saved Playlists</h3>
             <ul>
                 {playlists?.map((pl) => (
                     <li>
@@ -66,6 +127,7 @@ function Playlist(props) {
                     </li>
                 ))}
             </ul>
+            
         </>
     )
 }

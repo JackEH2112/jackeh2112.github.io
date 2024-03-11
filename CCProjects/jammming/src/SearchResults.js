@@ -28,7 +28,7 @@ function SearchResults(props) {
 
         <div id="searchResults">
             <div id='tracklist'>
-                <h3 class='heading'>Search Results</h3>
+                <h3 className='heading'>Search Results</h3>
                 {/*{renderTrack()}*/}
                 <Tracklist 
                     searchResults={searchResults}
@@ -36,7 +36,7 @@ function SearchResults(props) {
                 />
             </div>
             <div id='playlist'>
-                <h3 class='heading'>Playlist</h3>
+                <h3 className='heading'>Playlist</h3>
                 <Playlist
                     playlist={playlist}
                     removeFromPlaylist={removeFromPlaylist}

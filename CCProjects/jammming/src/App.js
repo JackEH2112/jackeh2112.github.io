@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
+//import SearchBar from './SearchBar.js';
 import './App.css';
 import React, {useState, useEffect} from 'react';
-//import SearchBar from './SearchBar.js';
 import SearchResults from './SearchResults.js';
 import axios from 'axios';
 
@@ -10,6 +10,7 @@ function App(props) {
   const REDIRECT_URI = 'http://localhost:3000'
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
   const RESPONSE_TYPE = 'token'
+  const SCOPES = 'playlist-modify-private playlist-modify-public'
 
   const [token, setToken] = useState('')
   const [data, setData] = useState()
@@ -45,21 +46,7 @@ function App(props) {
         type: 'track'
       }
     })
-
-    /*const getTrack = async () => {
-      const trackQuery = searchKey;
-      const endpoint = `https://api.spotify.com/v1/tracks?${token}`
-      try{
-        const response = await fetch(endpoint, {cache: 'no-cache'})
-        if(response.ok){
-          const jsonResponse = await response.json();
-          //function to parse data
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }*/
-
+    
     setData(response.data.tracks.items);
   }
 
@@ -67,17 +54,17 @@ function App(props) {
   return (
     <>
       <div id='heading'>
-        <h1 class='titleHeading'>Jammming!</h1>
-        <p class='titleHeading'>Personal Playlist Maker</p>
+        <h1 className='titleHeading'>Jammming!</h1>
+        <p className='titleHeading'>Personal Playlist Maker</p>
         
         {!token ?
-          <a class='logButton'
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          <a className='logButton'
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPES}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
           >
             <button> Login To Spotify</button>
           </a> 
           : 
-        <button class='logButton' onClick={logout}>Logout</button>}
+        <button className='logButton' onClick={logout}>Logout</button>}
 
         {token ?
         <div id='searchForm'>
